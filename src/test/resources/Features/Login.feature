@@ -4,7 +4,7 @@ Feature: Eurotech Login Test
   Background:
     Given The user is on the login page
 
-  @teacher
+  @teacher @smoke
   Scenario: Login As Teacher
 #    Given The user is on the login page
     When  The user enters teacher credentials
