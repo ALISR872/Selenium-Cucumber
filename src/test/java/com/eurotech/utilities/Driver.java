@@ -25,37 +25,30 @@ public class Driver {
             String browser = ConfigurationReader.get("browser");
             switch (browser) {
                 case "chrome" -> {
-
                     driver = new ChromeDriver();
                 }
                 case "chrome-headless" -> {
-
                     driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
                 }
                 case "firefox" -> {
-
                     driver = new FirefoxDriver();
                 }
                 case "firefox-headless" -> {
-
                     driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
                 }
                 case "ie" -> {
                     if (!System.getProperty("os.name").toLowerCase().contains("windows"))
                         throw new WebDriverException("Your OS doesn't support Internet Explorer");
-
                     driver = new InternetExplorerDriver();
                 }
                 case "edge" -> {
                     if (!System.getProperty("os.name").toLowerCase().contains("windows"))
                         throw new WebDriverException("Your OS doesn't support Edge");
-
                     driver = new EdgeDriver();
                 }
                 case "safari" -> {
                     if (!System.getProperty("os.name").toLowerCase().contains("mac"))
                         throw new WebDriverException("Your OS doesn't support Safari");
-
                     driver = new SafariDriver();
                 }
             }
@@ -63,13 +56,10 @@ public class Driver {
         return driver;
     }
 
-
     public static void closeDriver() {
         if (driver != null) {
             driver.quit();
             driver = null;
         }
     }
-
-
 }
