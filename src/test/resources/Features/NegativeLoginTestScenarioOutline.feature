@@ -1,6 +1,6 @@
 Feature: Negative Login Test
 
-  @as
+
   Scenario Outline: Negative Login Test Devex
     Given The user is on the login page
     When The user logs in using "<userType>" and "<password>" credentials

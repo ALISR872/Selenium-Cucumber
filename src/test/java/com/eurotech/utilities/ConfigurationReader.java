@@ -7,7 +7,6 @@ public class ConfigurationReader {
 
     private static Properties properties;
 
-
     static {
         try {
             // what file to read

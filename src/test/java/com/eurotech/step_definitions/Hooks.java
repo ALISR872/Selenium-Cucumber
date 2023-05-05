@@ -14,30 +14,32 @@ public class Hooks {
 
 
     @Before
-    public void setup(){
-         //  Driver.get().manage().window().maximize();  //optional
-      //  Driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-        Driver.get().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+    public void setup() {
+        //  Driver.get().manage().window().maximize();  //optional
+        Driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
     }
 
     @After
-    public void tearDown(Scenario scenario){
-        if(scenario.isFailed()){
+    public void tearDown(Scenario scenario) throws InterruptedException {
+        if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot,"image/png","screenshot");
+            scenario.attach(screenshot, "image/png", "screenshot");
         }
+
+        Thread.sleep(2000);
+
         Driver.closeDriver();
     }
 
     @Before("@db")
-    public void setupDB(){
+    public void setupDB() {
         System.out.println("This is coming from before DB");
         System.out.println("Connecting Database");
     }
 
     @After("@db")
-    public void tearDownDB(){
+    public void tearDownDB() {
         System.out.println("This is coming from after DB");
         System.out.println("Disconnecting Database");
     }
